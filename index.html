@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="id" class="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perbedaan Konsekuensi dan Hukuman - Edukasi & Psikologi</title>
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        cream: '#faf8f5',
+                        'cream-dark': '#f3efe6',
+                        darkbg: '#181716',
+                        darkcard: '#22201e',
+                        accent: '#8c6d53',
+                        'accent-dark': '#d4a373'
+                    },
+                    fontFamily: {
+                        serif: ['Georgia', 'Cambria', 'Times New Roman', 'serif'],
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                        arabic: ['Amiri', 'Traditional Arabic', 'serif']
+                    }
+                }
+            }
+        };
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Style CSS Custom -->
+    <style>
+        body {
+            transition: background-color 0.25s ease, color 0.25s ease;
+            background-color: #faf8f5;
+        }
+
+        .dark body {
+            background-color: #181716;
+        }
+
+        .drop-cap {
+            float: left;
+            font-family: 'Georgia', serif;
+            font-size: 3.5rem;
+            line-height: 0.85;
+            padding-top: 4px;
+            padding-right: 10px;
+            padding-left: 2px;
+            font-weight: 700;
+            color: #795548;
+        }
+
+        .dark .drop-cap {
+            color: #d4a373;
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #e2ddd5;
+            border-radius: 3px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #33312e;
+        }
+
+        #progress-bar {
+            width: 0%;
+        }
+    </style>
+</head>
+<body class="bg-cream dark:bg-darkbg text-stone-800 dark:text-stone-200 font-serif antialiased min-h-screen flex flex-col selection:bg-amber-100 dark:selection:bg-amber-900/50">
+
+    <!-- Scroll Progress Bar -->
+    <div id="progress-bar" class="fixed top-0 left-0 h-0.5 bg-stone-700 dark:bg-amber-500 z-50 transition-all duration-150"></div>
+
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 w-full py-4 bg-cream/80 dark:bg-darkbg/80 backdrop-blur-md border-b border-stone-200/50 dark:border-stone-800/50 transition-all duration-300">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 flex items-center justify-between">
+            <div class="w-24 hidden sm:block"></div>
+
+            <a href="#" class="group relative font-serif italic font-bold text-xl sm:text-2xl text-stone-900 dark:text-stone-100 tracking-tight transition-transform duration-300 hover:scale-105 mx-auto sm:mx-0">
+                <span class="bg-gradient-to-r from-stone-900 via-stone-700 to-stone-900 dark:from-white dark:via-stone-300 dark:to-white bg-clip-text text-transparent">
+                    Edukasi & Psikologi
+                </span>
+                <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-700 dark:bg-amber-400 transition-all duration-300 group-hover:w-full"></span>
+            </a>
+
+            <!-- Kontrol Ukuran Teks & Tema -->
+            <div class="flex items-center space-x-3 text-xs sm:text-sm font-sans">
+                <div class="flex items-center bg-stone-200/70 dark:bg-stone-800/80 rounded-full px-3 py-1.5 text-stone-700 dark:text-stone-300 font-medium shadow-inner transition-all hover:shadow-md">
+                    <button id="btn-text-decrease" title="Kecilkan Teks" class="hover:text-amber-700 dark:hover:text-amber-400 active:scale-90 px-1.5 transition-all focus:outline-none">A-</button>
+                    <span class="text-stone-400 dark:text-stone-600 px-1 text-xs select-none">|</span>
+                    <button id="btn-text-increase" title="Besarkan Teks" class="hover:text-amber-700 dark:hover:text-amber-400 active:scale-90 px-1.5 transition-all focus:outline-none">A+</button>
+                </div>
+
+                <button id="btn-theme-toggle" title="Ubah Mode Layar" class="p-2 bg-stone-200/70 dark:bg-stone-800/80 text-stone-700 dark:text-stone-300 hover:text-amber-600 dark:hover:text-amber-400 hover:scale-110 active:scale-95 transition-all focus:outline-none rounded-full shadow-sm hover:shadow-md">
+                    <i id="theme-icon" class="fa-solid fa-moon text-base transition-transform duration-300"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="flex-grow max-w-2xl mx-auto px-5 sm:px-6 py-6 sm:py-10 w-full">
+        <article>
+            <!-- Article Header -->
+            <header class="mb-8">
+                <div class="flex items-center flex-wrap gap-2 text-xs font-sans text-stone-500 dark:text-stone-400 mb-4">
+                    <span class="bg-[#ede8e1] dark:bg-stone-800 text-stone-700 dark:text-stone-300 px-3 py-1 rounded-full font-normal transition-all duration-300 hover:scale-105 hover:bg-stone-300 dark:hover:bg-stone-700 hover:shadow-sm cursor-pointer">
+                        Parenting & Kedisiplinan
+                    </span>
+                    
+                    <span class="flex items-center gap-1.5 ml-1 transition-all duration-300 hover:text-stone-800 dark:hover:text-stone-200 group cursor-default">
+                        <i class="fa-regular fa-calendar text-stone-400 group-hover:scale-110 group-hover:text-stone-600 dark:group-hover:text-stone-300 transition-transform duration-300"></i>
+                        <time datetime="2026-10-04">4 Oktober 2026</time>
+                    </span>
+                    
+                    <span class="text-stone-300 dark:text-stone-700">•</span>
+                    
+                    <span class="flex items-center gap-1.5 transition-all duration-300 hover:text-stone-800 dark:hover:text-stone-200 group cursor-default">
+                        <i class="fa-regular fa-clock text-stone-400 group-hover:animate-spin transition-transform duration-500"></i>
+                        <span id="read-timer" class="font-mono tabular-nums">03:00</span>
+                    </span>
+                </div>
+
+                <h1 class="text-3xl sm:text-4xl font-bold font-serif text-stone-900 dark:text-stone-100 leading-snug sm:leading-tight mb-3">
+                    Perbedaan Konsekuensi dan Hukuman
+                </h1>
+                
+                <p class="text-lg sm:text-xl font-serif italic text-amber-900 dark:text-amber-400 mb-6 leading-relaxed">
+                    Memahami akibat logis dari tindakan vs. sanksi sepihak yang memicu rasa takut.
+                </p>
+
+                <div class="w-full border-b border-stone-200/80 dark:border-stone-800 mb-6"></div>
+            </header>
+
+            <!-- Article Body -->
+            <div id="article-body" class="text-lg space-y-6 text-stone-800 dark:text-stone-300 leading-relaxed font-serif text-justify hyphens-auto transition-all duration-200">
+                
+                <p class="leading-relaxed">
+                    <span class="drop-cap">P</span>erbedaan utama antara konsekuensi dan hukuman terletak pada sumber dan tujuannya: konsekuensi adalah akibat logis atau alamiah dari suatu tindakan yang berfokus pada pembelajaran dan tanggung jawab, sedangkan hukuman adalah sanksi sepihak dari pihak berwenang yang bersifat membalas dan memicu rasa takut.<sup><a href="#fn1" class="text-amber-800 dark:text-amber-400 font-sans text-xs">1</a></sup>
+                </p>
+
+                <!-- Tabel Perbandingan -->
+                <h2 class="text-2xl font-bold font-serif text-stone-900 dark:text-stone-100 pt-4 pb-1 border-b border-stone-200/60 dark:border-stone-800 text-left">
+                    Tabel Perbandingan Konsekuensi dan Hukuman
+                </h2>
+
+                <div class="overflow-x-auto my-6 font-sans text-sm">
+                    <table class="w-full text-left border-collapse rounded-lg overflow-hidden shadow-sm">
+                        <thead>
+                            <tr class="bg-amber-800 text-white dark:bg-amber-900">
+                                <th class="p-3 font-semibold">Aspek</th>
+                                <th class="p-3 font-semibold">Konsekuensi</th>
+                                <th class="p-3 font-semibold">Hukuman</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-stone-200 dark:divide-stone-800 bg-[#f8f5f0] dark:bg-stone-800/40">
+                            <tr>
+                                <td class="p-3 font-semibold text-stone-900 dark:text-stone-100">Sumber / Asal</td>
+                                <td class="p-3">Alamiah atau kesepakatan bersama</td>
+                                <td class="p-3">Keputusan sepihak dari pemegang otoritas</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-stone-900 dark:text-stone-100">Tujuan</td>
+                                <td class="p-3">Edukasi, membangun kesadaran, dan perbaikan</td>
+                                <td class="p-3">Pembalasan, kontrol instan, atau efek jera</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-stone-900 dark:text-stone-100">Korelasi</td>
+                                <td class="p-3">Relevan dan logis dengan kesalahan yang dibuat</td>
+                                <td class="p-3">Sering kali tidak berhubungan langsung dengan pelanggaran</td>
+                            </tr>
+                            <tr>
+                                <td class="p-3 font-semibold text-stone-900 dark:text-stone-100">Dampak Psikologis</td>
+                                <td class="p-3">Menumbuhkan rasa tanggung jawab internal</td>
+                                <td class="p-3">Menimbulkan rasa malu, tertekan, atau takut</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Karakteristik Konsekuensi -->
+                <h2 class="text-2xl font-bold font-serif text-stone-900 dark:text-stone-100 pt-4 pb-1 border-b border-stone-200/60 dark:border-stone-800 text-left">
+                    Karakteristik Konsekuensi
+                </h2>
+
+                <ul class="space-y-3 list-none pl-0">
+                    <li>
+                        <strong>Bersifat Konstruktif:</strong> Hasil yang diberikan dirancang untuk mengajari individu memahami dampak dari pilihan yang mereka ambil.
+                    </li>
+                    <li>
+                        <strong>Keterkaitan Logis:</strong> Bentuk akibatnya berkaitan langsung dengan perilaku yang melanggar aturan.
+                    </li>
+                    <li>
+                        <strong>Mendorong Kesadaran:</strong> Individu diajak merenungkan tindakan mereka agar tidak mengulangnya atas dasar kesadaran diri, bukan karena takut.<sup><a href="#fn2" class="text-amber-800 dark:text-amber-400 font-sans text-xs">2</a></sup>
+                    </li>
+                </ul>
+
+                <!-- Karakteristik Hukuman -->
+                <h2 class="text-2xl font-bold font-serif text-stone-900 dark:text-stone-100 pt-6 pb-1 border-b border-stone-200/60 dark:border-stone-800 text-left">
+                    Karakteristik Hukuman
+                </h2>
+
+                <ul class="space-y-3 list-none pl-0">
+                    <li>
+                        <strong>Bersifat Paksaan:</strong> Diberikan secara sepihak tanpa melibatkan ruang diskusi atau kesepakatan dari pihak yang melanggar.
+                    </li>
+                    <li>
+                        <strong>Pemicu Reaksi Defensif:</strong> Cenderung membuat seseorang merasa disudutkan, marah, atau bahkan belajar menyembunyikan kesalahan di masa depan agar tidak ketahuan.
+                    </li>
+                    <li>
+                        <strong>Fokus Jangka Pendek:</strong> Hanya menghentikan perilaku buruk sesaat karena rasa takut, tanpa memperbaiki pola pikir jangka panjang.<sup><a href="#fn3" class="text-amber-800 dark:text-amber-400 font-sans text-xs">3</a></sup>
+                    </li>
+                </ul>
+
+                <!-- Contoh Perbedaan dalam Keseharian -->
+                <h2 class="text-2xl font-bold font-serif text-stone-900 dark:text-stone-100 pt-6 pb-1 border-b border-stone-200/60 dark:border-stone-800 text-left">
+                    Contoh Perbedaan dalam Keseharian
+                </h2>
+
+                <div class="space-y-4">
+                    <div class="p-4 bg-[#f5f1ea] dark:bg-stone-800/50 rounded-xl border-l-4 border-amber-800 dark:border-amber-500">
+                        <p class="font-bold text-stone-900 dark:text-stone-100 mb-1">Contoh Konsekuensi:</p>
+                        <p>
+                            Seorang anak bermain mainan sampai larut malam dan mengabaikan waktu tidur, sehingga keesokan harinya ia merasa mengantuk dan lelah di sekolah. Contoh lain dalam dunia kerja, karyawan yang terlambat datang berakibat pada penundaan tugas penting atau penurunan performa kerja yang wajar.<sup><a href="#fn4" class="text-amber-800 dark:text-amber-400 font-sans text-xs">4</a></sup>
+                        </p>
+                    </div>
+
+                    <div class="p-4 bg-[#f5f1ea] dark:bg-stone-800/50 rounded-xl border-l-4 border-stone-500 dark:border-stone-600">
+                        <p class="font-bold text-stone-900 dark:text-stone-100 mb-1">Contoh Hukuman:</p>
+                        <p>
+                            Anak yang tidur terlalu malam langsung dilarang menonton TV selama satu minggu penuh tanpa kaitan langsung yang logis dengan alasan tidur malamnya. Dalam konteks lain, seorang anak dilarang bermain atau dimarahi keras secara spontan karena melanggar aturan yang dibuat sepihak.<sup><a href="#fn5" class="text-amber-800 dark:text-amber-400 font-sans text-xs">5</a></sup>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Bagian Footnote / Catatan Kaki Sumber -->
+                <div class="mt-12 pt-6 border-t border-stone-300 dark:border-stone-700 text-xs font-sans text-stone-600 dark:text-stone-400 space-y-2">
+                    <p class="font-bold text-sm text-stone-800 dark:text-stone-200">Catatan Kaki & Sumber:</p>
+                    <ol class="list-decimal list-inside space-y-1 break-all">
+                        <li id="fn1">
+                            <a href="https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya" target="_blank" rel="noopener noreferrer" class="hover:underline text-amber-800 dark:text-amber-400">
+                                https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya
+                            </a>[cite: 1, 4]
+                        </li>
+                        <li id="fn2">
+                            <a href="https://alfurqanmq.sch.id/kenali-beda-antara-hukuman-dan-konsekuensi/" target="_blank" rel="noopener noreferrer" class="hover:underline text-amber-800 dark:text-amber-400">
+                                https://alfurqanmq.sch.id/kenali-beda-antara-hukuman-dan-konsekuensi/
+                            </a>[cite: 3]
+                        </li>
+                        <li id="fn3">
+                            <a href="https://translate.google.com/translate?u=https://www.empoweringparents.com/article/punishments-vs-consequences-which-are-you-using/&hl=id&sl=en&tl=id&client=sge" target="_blank" rel="noopener noreferrer" class="hover:underline text-amber-800 dark:text-amber-400">
+                                https://translate.google.com/translate?u=https://www.empoweringparents.com/article/punishments-vs-consequences-which-are-you-using/&hl=id&sl=en&tl=id&client=sge
+                            </a>[cite: 3]
+                        </li>
+                        <li id="fn4">
+                            <a href="https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya" target="_blank" rel="noopener noreferrer" class="hover:underline text-amber-800 dark:text-amber-400">
+                                https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya
+                            </a>[cite: 1, 2]
+                        </li>
+                        <li id="fn5">
+                            <a href="https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya" target="_blank" rel="noopener noreferrer" class="hover:underline text-amber-800 dark:text-amber-400">
+                                https://www.detik.com/bali/berita/d-6531398/konsekuensi-adalah-perbedaan-dengan-hukuman-dan-contohnya
+                            </a>[cite: 1, 2]
+                        </li>
+                    </ol>
+                </div>
+
+            </div>
+        </article>
+
+        <!-- Post Action Row -->
+        <div class="mt-12 pt-6 border-t border-stone-200/90 dark:border-stone-800/80 font-sans">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div class="flex items-center space-x-3">
+                    <button id="btn-like" class="group relative flex items-center space-x-2 bg-stone-200/70 dark:bg-stone-800 hover:bg-red-50 dark:hover:bg-red-950/30 text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md border border-transparent hover:border-red-200 dark:hover:border-red-800/50 focus:outline-none">
+                        <i id="like-icon" class="fa-regular fa-heart text-red-500 text-sm transition-transform duration-300 group-hover:scale-125 group-active:scale-90"></i>
+                        <span id="like-count" class="font-semibold transition-colors group-hover:text-red-600 dark:group-hover:text-red-400">0</span>
+                        <span class="transition-colors group-hover:text-red-600 dark:group-hover:text-red-400">Suka</span>
+                    </button>
+
+                    <button id="btn-share" class="group inline-flex items-center space-x-2 bg-stone-200/70 dark:bg-stone-800 hover:bg-stone-300/80 dark:hover:bg-stone-700/80 text-stone-800 dark:text-stone-200 text-xs sm:text-sm font-medium px-4 py-2 rounded-full transition-all duration-300 hover:scale-105 active:scale-95 shadow-sm hover:shadow-md focus:outline-none">
+                        <i class="fa-solid fa-link text-stone-600 dark:text-stone-400 text-xs transition-transform duration-300 group-hover:rotate-45 group-hover:text-stone-900 dark:group-hover:text-white"></i>
+                        <span>Bagikan</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="w-full mt-20 pb-16 font-sans text-stone-500 dark:text-stone-400 text-xs sm:text-sm">
+        <div class="max-w-xl mx-auto px-4 text-center space-y-1">
+            <p>© 2026 Edukasi & Psikologi. Ruang Baca & Edukasi.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Interaktif -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Countdown Timer Baca
+            let totalSeconds = 3 * 60;
+            const timerElement = document.getElementById('read-timer');
+
+            const countdown = setInterval(() => {
+                if (totalSeconds <= 0) {
+                    clearInterval(countdown);
+                    if (timerElement) timerElement.textContent = 'Selesai dibaca';
+                    return;
+                }
+
+                totalSeconds--;
+
+                const minutes = Math.floor(totalSeconds / 60);
+                const seconds = totalSeconds % 60;
+                const formattedMinutes = String(minutes).padStart(2, '0');
+                const formattedSeconds = String(seconds).padStart(2, '0');
+
+                if (timerElement) timerElement.textContent = `${formattedMinutes}:${formattedSeconds}`;
+            }, 1000);
+
+            // 2. Pengatur Ukuran Teks
+            const articleBody = document.getElementById('article-body');
+            const btnIncrease = document.getElementById('btn-text-increase');
+            const btnDecrease = document.getElementById('btn-text-decrease');
+            const fontSizes = ['text-base', 'text-lg', 'text-xl', 'text-2xl'];
+            let currentSizeIndex = 1;
+
+            if (btnIncrease && articleBody) {
+                btnIncrease.addEventListener('click', () => {
+                    if (currentSizeIndex < fontSizes.length - 1) {
+                        articleBody.classList.remove(fontSizes[currentSizeIndex]);
+                        currentSizeIndex++;
+                        articleBody.classList.add(fontSizes[currentSizeIndex]);
+                    }
+                });
+            }
+
+            if (btnDecrease && articleBody) {
+                btnDecrease.addEventListener('click', () => {
+                    if (currentSizeIndex > 0) {
+                        articleBody.classList.remove(fontSizes[currentSizeIndex]);
+                        currentSizeIndex--;
+                        articleBody.classList.add(fontSizes[currentSizeIndex]);
+                    }
+                });
+            }
+
+            // 3. Sakelar Tema (Dark / Light Mode)
+            const themeToggleBtn = document.getElementById('btn-theme-toggle');
+            const themeIcon = document.getElementById('theme-icon');
+            const htmlElement = document.documentElement;
+
+            if (themeToggleBtn && themeIcon) {
+                themeToggleBtn.addEventListener('click', () => {
+                    if (htmlElement.classList.contains('dark')) {
+                        htmlElement.classList.remove('dark');
+                        htmlElement.classList.add('light');
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    } else {
+                        htmlElement.classList.remove('light');
+                        htmlElement.classList.add('dark');
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    }
+                });
+            }
+
+            // 4. Bar Progres Gulir Layar
+            window.addEventListener('scroll', () => {
+                const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+                const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrolled = height > 0 ? (winScroll / height) * 100 : 0;
+                const progressBar = document.getElementById('progress-bar');
+                if (progressBar) progressBar.style.width = `${scrolled}%`;
+            });
+
+            // 5. Fitur Tombol Suka
+            let isLiked = false;
+            let likeCount = 0;
+
+            function toggleLike() {
+                const countSpan = document.getElementById('like-count');
+                const icon = document.getElementById('like-icon');
+
+                if (!isLiked) {
+                    likeCount++;
+                    isLiked = true;
+                    icon.classList.remove('fa-regular');
+                    icon.classList.add('fa-solid');
+                } else {
+                    likeCount--;
+                    isLiked = false;
+                    icon.classList.remove('fa-solid');
+                    icon.classList.add('fa-regular');
+                }
+
+                if (countSpan) countSpan.innerText = likeCount;
+            }
+
+            // 6. Fitur Salin Tautan
+            function copyArticleLink(event) {
+                const dummy = document.createElement('input');
+                document.body.appendChild(dummy);
+                dummy.value = window.location.href;
+                dummy.select();
+                document.execCommand('copy');
+                document.body.removeChild(dummy);
+
+                const button = event.currentTarget;
+                const originalHTML = button.innerHTML;
+                button.innerHTML = '<i class="fa-solid fa-check text-green-600 text-xs"></i><span>Tersalin!</span>';
+                setTimeout(() => {
+                    button.innerHTML = originalHTML;
+                }, 2000);
+            }
+
+            const btnLike = document.getElementById('btn-like');
+            const btnShare = document.getElementById('btn-share');
+
+            if (btnLike) btnLike.addEventListener('click', toggleLike);
+            if (btnShare) btnShare.addEventListener('click', copyArticleLink);
+        });
+    </script>
+</body>
+</html>
