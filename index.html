@@ -355,6 +355,7 @@
                     }
                 });
             }
+
             if (btnDecrease && articleBody) {
                 btnDecrease.addEventListener('click', () => {
                     if (currentSizeIndex > 0) {
@@ -418,7 +419,7 @@
                 if (countSpan) countSpan.innerText = likeCount;
             }
 
-            / 6. Fitur Salin Tautan
+            // 6. Fitur Salin Tautan
             function copyArticleLink(event) {
                 const dummy = document.createElement('input');
                 document.body.appendChild(dummy);
@@ -433,8 +434,6 @@
                 setTimeout(() => {
                     button.innerHTML = originalHTML;
                 }, 2000);
-            }
-
             }
 
             const btnLike = document.getElementById('btn-like');
